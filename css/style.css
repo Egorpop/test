@@ -1,0 +1,140 @@
+body{
+    font-family: 'Ubuntu', sans-serif;
+}
+.topnavheight{
+    height: 58px;
+}
+.backimg{
+    margin: 0;
+    padding: 0;
+    background: url('../img/rectangle.png') no-repeat  center  ;
+    width: 100%;
+    height: 500px;
+    
+}
+.backimgdark{
+    width: 100%;
+    height: 500px;
+    background-color: rgba(53, 53, 53, 0.5);
+}
+
+.whitecolor{
+    color: white;
+    border: black 1px;
+    text-shadow: 1px 1px 10px #000;
+}
+.phonenumber{
+    border-radius: 0;
+}
+.news{
+    margin-top: 70px;
+    margin-bottom: 48px;
+    font-weight: 700;
+}
+.bd-highlight{
+    height: 100%;
+    margin: 0;
+}
+.buttonsider{
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: grey;
+}
+.carousel-indicators .active .buttonsider{
+    background-color: red;
+}
+.bgkvadrleft{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    background-color: #D51522;
+    height: 85%;
+    width: 31%;
+}
+.bgkvadrright{
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    background-color: #6F61A0;
+    height: 85%;
+    width: 31%;
+}
+
+.bgkvadr{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    width: 100%;   
+}
+.buttonmenu{
+    display: block;
+    text-align: left;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+.zhir{
+    font-weight: 700;
+    text-align: right;
+}
+ul.bottommenu li{
+    display:inline-block;
+}
+ul.bottommenu a, a:hover, a:active, a:visited{
+    color: #FFFFFF;
+    padding: .5rem 1rem;
+    text-decoration: none;
+}
+.topnav a.nav-link:link{
+    color: #2B2B2B;
+}
+.minitext{
+    font-size: 0.8em;
+    text-align: right;
+}
+.zhirban{
+    font-weight: 700;
+    font-size: 2.5em;
+}
+.bottomnavheight{
+    height: 163px;
+}
+.datecard{
+    font-family: 'Roboto', sans-serif;
+    color: #636363;
+    font-size: 0.8em;
+}
+.cardnews{
+    text-align: left;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0;
+}
+.textcard{
+    font-family: 'Roboto', sans-serif;
+    height: 122px;
+    font-weight: 500;
+    font-size: 1.2em;
+    text-align: left;
+    overflow: hidden;
+}
+.offcanvas-start{
+    box-shadow: 5px 0px 20px 3px rgba(0, 0, 0, .2);
+}
+.navbar-toggler{
+    color: transparent;
+    border-color: transparent;
+    border: none;
+    border-radius: 0;
+    transition: none;
+    text-decoration: none;
+}
