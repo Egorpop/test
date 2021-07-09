@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -78,11 +79,11 @@
                   <p class="whitecolor">Будем рады, если Вы обратитесь в наше Агентство. Мы готовы предложить Вам передовые решения для продвижения Вашего бизнеса.</p> 
                 </div>
                 <div class="row">
-                  <form action="/" class="form-horizontal">
+                  <form action="/send.php" method="POST" class="form-horizontal">
                     <div class="form-group">
                       <div class="row">
                         <div class="col-12 col-md-4">
-                          <input type="text" class="form-control phonenumber" placeholder="Номер телефона">
+                          <input type="text" id="tel" name="telephone" class="form-control phonenumber" placeholder="Номер телефона">
                         </div>
                         <div class="col-12 col-md-4">
                           <input type="submit" class="btn btn-danger col-12 phonenumber" placeholder="Обратный звонок">
@@ -106,81 +107,48 @@
     </div>
   </div>
   <div class="row">
-    <div class="d-flex justify-content-center">
-    <!-- Carousel wrapper -->
-    <div id="carouselMultiItemExample" class="carousel slide text-center" data-bs-ride="carousel">
-      <!-- Indicators -->
-      <div class="carousel-indicators py-4">
-        <button
-          type="button"
-          data-bs-target="#carouselMultiItemExample"
-          data-bs-slide-to="0"
-          class="active"
-        >
-        <div class="buttonsider"></div></button>
-        <button
-          type="button"
-          data-bs-target="#carouselMultiItemExample"
-          data-bs-slide-to="1"
-        ><div class="buttonsider"></div></button>
-        <button
-          type="button"
-          data-bs-target="#carouselMultiItemExample"
-          data-bs-slide-to="2"
-        ><div class="buttonsider"></div></button>
-      </div>
-      <!-- Inner -->
-      <div class="carousel-inner py-4">
-        <div class="bgkvadr">
-          <div class="bgkvadrleft mx-2 my-2"></div>
-          <div class="bgkvadrright mx-2 my-2"></div>
-        </div>
-        <!-- Single item -->
-        <?php
+    <div class="d-flex justify-content-center transp">
+      <div class="container p-0">
+       <?php
           require_once 'controller.php';
-          $result = connect();
-          for ($i = 0; $i <= 2; $i++){
-        ?>
-          <div class="carousel-item <?php if ($i == 0) echo 'active'?>">
-            <div class="container">
-              <div class="row">
-                <?php
-                  for ($j = 0; $j <= 2; $j++){
-                    $row = $result->fetch_assoc();
-                    $timestamp = strtotime($row['data']);
-                    $new_date_format = date('d.m.Y', $timestamp);
-                ?>
-                  <div class="col-lg-4">
-                    <div class="cardnews">
-                      <div class="container my-4">
-                        <div class="datecard">
-                          <?php echo $new_date_format; ?>
-                        </div>
-                        <div class="textcard mt-3">
-                          <?php echo $row['text']; ?>
-                        </div>
-                        <button type="button" class="btn btn-outline-danger phonenumber">Подробнее</button>
-                      </div>
-                    </div>
-                  </div>
-                <?php
-                }?>
+          $result = connect();?>
+      <div class="swiper-container mySwiper px-3 py-3">
+      <div class="bgkvadr">
+          <div class="bgkvadrleft mx-0 my-0"></div>
+          <div class="bgkvadrright mx-0 my-0"></div>
+        </div>
+        <div class="swiper-wrapper">
+        
+          <?php
+            for ($j = 0; $j <= 8; $j++){
+              $row = $result->fetch_assoc();
+              $timestamp = strtotime($row['data']);
+              $new_date_format = date('d.m.Y', $timestamp);
+          ?>
+          <div class="swiper-slide">
+            <div class="cardnews">
+              <div class="container my-4">
+                <div class="datecard">
+                  <?php echo $new_date_format; ?>
+                </div>
+                <div class="textcard mt-3">
+                  <?php echo $row['text']; ?>
+                </div>
+                <button type="button" class="btn btn-outline-danger phonenumber">Подробнее</button>
               </div>
             </div>
           </div>
-        <?php
-        }?>
+          <?php
+          }?>
+        </div>
+        
       </div>
-      <!-- Inner -->
-      <br>
-      <br>
-      <br>
+      <div class="swiper-pagination mb-4"></div>
+      </div>
     </div>
-    <!-- Carousel wrapper -->
-  </div>
   </div>
 </div>
-<footer class="text-center text-white" style="background-color: #211F2B; width: 100%;">
+<footer class="text-center text-white mt-4" style="background-color: #211F2B; width: 100%;">
 <div class="container ">
   <div class="row">
     <div class="col-lg-1 d-flex justify-content-center align-items-center bottomnavheight">
@@ -208,28 +176,8 @@
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<script>
-    (function () {
-    document.querySelector('[data-toggle="offcanvas"]').addEventListener("click", function () {
-    document.querySelector("#offcanvasExample").classList.toggle("navbar-collapse");
-    document.querySelector("#offcanvasExample").classList.toggle("collapse");
-    document.querySelector("#offcanvasExample").classList.toggle("offcanvas");
-    document.querySelector("#offcanvasExample").classList.toggle("offcanvas-body");
-    document.querySelector("#offcanvasExample").classList.toggle("offcanvas-start");
-    document.querySelector("#offcanvasExample").classList.toggle("show");
-    });
-    })();
-    (function () {
-    document.querySelector("#offcanvas").addEventListener("click", function () {
-    document.querySelector("#offcanvasExample").classList.toggle("navbar-collapse");
-    document.querySelector("#offcanvasExample").classList.toggle("collapse");
-    document.querySelector("#offcanvasExample").classList.toggle("offcanvas-body");
-    document.querySelector("#offcanvasExample").classList.toggle("offcanvas");
-    document.querySelector("#offcanvasExample").classList.toggle("offcanvas-start");
-    document.querySelector("#offcanvasExample").classList.toggle("show");
-    });
-    })();
-  </script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="js/script.js"></script>
 </footer>
 </body>
 </html>
